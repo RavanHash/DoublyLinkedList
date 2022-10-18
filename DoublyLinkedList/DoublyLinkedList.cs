@@ -15,21 +15,12 @@ namespace DoublyLinkedList
             Tail = null;
             Count = 0;
         }
-        
-        public DoublyLinkedList(T data)
+
+        public void AddNodeToEnd(T data)
         {
             Node<T> newNode = new Node<T>(data);
 
-            Head = newNode;
-            Tail = newNode;
-            Count = 1;
-        }
-
-        public void AddNode(T data)
-        {
-            Node<T> newNode = new Node<T>(data);
-
-            if(Head == null)
+            if (Head == null)
             {
                 Head = newNode;
                 Tail = newNode;
@@ -49,9 +40,9 @@ namespace DoublyLinkedList
         {
             Node<T> currentNode = Head;
 
-            while(currentNode != null)
+            while (currentNode != null)
             {
-                if(currentNode.Data.Equals(data))
+                if (currentNode.Data.Equals(data))
                 {
                     currentNode.Previous.Next = currentNode.Next;
                     currentNode.Next.Previous = currentNode.Previous;
@@ -69,9 +60,9 @@ namespace DoublyLinkedList
             DoublyLinkedList<T> result = new DoublyLinkedList<T>();
 
             Node<T> currentNode = Tail;
-            while(currentNode != null)
+            while (currentNode != null)
             {
-                result.AddNode(currentNode.Data);
+                result.AddNodeToEnd(currentNode.Data);
 
                 currentNode = currentNode.Previous;
             }
@@ -79,14 +70,35 @@ namespace DoublyLinkedList
             return result;
         }
 
-        public void ToArray()
+        public int[] ToArray()
         {
-            // Implement
+            int[] result = new int[Count];
+
+            Node<T> currentNode = Head;
+
+            for (int i = 0; i < Count; i++)
+            {
+                result[i] = Convert.ToInt32(currentNode.Data);
+                currentNode = currentNode.Next;
+            }
+
+            return result;
         }
 
-        public void Avarage()
+        public double Avarage()
         {
-            //list.Average();
+            double result = 0;
+            Node<T> currentNode = Head;
+
+            for (int i = 0; i < Count; i++)
+            {
+                result += Convert.ToInt32(currentNode.Data);
+                currentNode = currentNode.Next;
+            }
+
+            result = result / Count;
+
+            return result;
         }
 
         public void OutputList()

@@ -12,15 +12,24 @@ namespace DoublyLinkedList
         {
             DoublyLinkedList<int> doublyLinkedList = new DoublyLinkedList<int>();
 
-            doublyLinkedList.AddNode(1);
-            doublyLinkedList.AddNode(22);
-            doublyLinkedList.AddNode(-5);
-            doublyLinkedList.AddNode(7);
+            doublyLinkedList.AddNodeToEnd(1);
+            doublyLinkedList.AddNodeToEnd(22);
+            doublyLinkedList.AddNodeToEnd(-5);
+            doublyLinkedList.AddNodeToEnd(7);
 
             doublyLinkedList.OutputList();
             Console.WriteLine();
 
-            //doublyLinkedList.RemoveNodeWithData(-5);
+
+            Console.WriteLine(Convert.ToDouble(doublyLinkedList.Avarage()));
+
+            /*int[] array = doublyLinkedList.ToArray();
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.Write(array[i] + " ");
+            }*/
+
+            //doublyLinkedList.RemoveNodeWithData(-5);  
 
             /*DoublyLinkedList<int> reversedList = doublyLinkedList.Reverse();
             reversedList.OutputList();
